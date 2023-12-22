@@ -1,5 +1,6 @@
 import logging
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
+from telegram.constants import ParseMode
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackContext
 from dotenv import load_dotenv
 import os
 import asyncio
@@ -44,10 +45,10 @@ async def handle_message(update, context, stream=False):
     if stream:
         for chunk in response:
             formatted_chunk = to_markdown(chunk.text)
-            await update.message.reply_text(formatted_chunk, parse_mode='Markdown')
+            await update.message.reply_text(formatted_chunk, parse_mode=ParseMode.MARKDOWN)
     else:
         formatted_response = to_markdown(response.text)
-        await update.message.reply_text(formatted_response, parse_mode='Markdown')
+        await update.message.reply_text(formatted_response, parse_mode=ParseMode.MARKDOWN)
 
 # 主函数以运行机器人
 async def main():
