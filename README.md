@@ -1,1 +1,1 @@
-https://github.com/speshiou/gemini-telegram-bot
+https://github.com/rabilrbl/gemini-pro-bot
