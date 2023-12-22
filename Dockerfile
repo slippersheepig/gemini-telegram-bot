@@ -1,4 +1,4 @@
-FROM python:slim
+FROM python
 WORKDIR /gemini
 COPY . .
 RUN pip install --no-cache-dir -r requirements.txt
