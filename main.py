@@ -1,5 +1,4 @@
 import logging
-from telegram import ParseMode
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackContext
 from dotenv import load_dotenv
 import os
@@ -45,15 +44,15 @@ async def handle_message(update, context, stream=False):
     if stream:
         for chunk in response:
             formatted_chunk = to_markdown(chunk.text)
-            await update.message.reply_text(formatted_chunk, parse_mode=ParseMode.MARKDOWN)
+            await update.message.reply_text(formatted_chunk, parse_mode='Markdown')
     else:
         formatted_response = to_markdown(response.text)
-        await update.message.reply_text(formatted_response, parse_mode=ParseMode.MARKDOWN)
+        await update.message.reply_text(formatted_response, parse_mode='Markdown')
 
 # 主函数以运行机器人
 async def main():
     # 创建Updater并传递您的机器人令牌
-    updater = Updater("YOUR_BOT_TOKEN", use_context=True)
+    updater = Updater("BOT_TOKEN", use_context=True)
 
     # 获取调度程序以注册处理程序
     dp = updater.dispatcher
