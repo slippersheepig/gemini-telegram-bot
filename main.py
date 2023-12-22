@@ -50,10 +50,6 @@ async def handle_message(update, context, stream=False):
         formatted_response = to_markdown(response.text)
         await update.message.reply_text(formatted_response, parse_mode=ParseMode.MARKDOWN)
 
-# 处理/stream命令的函数
-async def handle_streamable_message(update, context):
-    await handle_message(update, context, stream=True)
-
 # 主函数以运行机器人
 async def main():
     # 创建Updater并传递您的机器人令牌
@@ -67,9 +63,6 @@ async def main():
 
     # 注册用于非命令消息的消息处理程序
     dp.add_handler(MessageHandler(Filters.text & ~Filters.command, lambda update, context: asyncio.run(handle_message(update, context, stream=False))))
-
-    # 注册/stream命令处理程序
-    dp.add_handler(CommandHandler("stream", lambda update, context: asyncio.run(handle_streamable_message(update, context))))
 
     # 启动机器人
     updater.start_polling()
