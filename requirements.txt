@@ -1,4 +1,3 @@
 google-generativeai
-google-colab
 python-telegram-bot
-python-dotenv
+pymongo
