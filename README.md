@@ -14,3 +14,4 @@ services:
       - ./.env:/gemini/.env
     restart: always
 ```
+以上两个文件放同一目录，然后运行`docker-compose up -d`命令即可
