@@ -1,4 +1,5 @@
 FROM python:slim AS builder
+RUN apt update && apt install git -y
 RUN git clone https://github.com/rabilrbl/gemini-pro-bot.git /gemini
 RUN pip install --no-cache-dir -r /gemini/requirements.txt
 
