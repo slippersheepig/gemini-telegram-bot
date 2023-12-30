@@ -1,12 +1,10 @@
-FROM python:slim AS builder
-RUN apt update && apt install git -y
+FROM alpine AS builder
+RUN apk add --no-cache git
 RUN git clone https://github.com/rabilrbl/gemini-pro-bot.git /gemini
-RUN pip install --no-cache-dir -r /gemini/requirements.txt
 
-FROM python:alpine
+FROM python:slim
 WORKDIR /gemini
-COPY --from=builder /usr/local/lib/python3.12/site-packages /usr/local/lib/python3.12/site-packages
-COPY --from=builder /usr/local/bin /usr/local/bin
 COPY --from=builder /gemini .
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD [ "python3", "main.py" ]
+CMD [ "python", "main.py" ]
