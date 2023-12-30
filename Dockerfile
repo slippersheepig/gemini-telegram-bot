@@ -1,6 +1,4 @@
-FROM python:alpine AS builder
-RUN pip install --upgrade pip
-RUN apk add --no-cache git
+FROM python:slim AS builder
 RUN git clone https://github.com/rabilrbl/gemini-pro-bot.git /gemini
 RUN pip install --no-cache-dir -r /gemini/requirements.txt
 
