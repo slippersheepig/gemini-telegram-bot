@@ -177,7 +177,7 @@ async def main():
     genai.configure(api_key=google_gemini_key)
 
     # Init bot
-    bot = AsyncTeleBot(options.tg_token)
+    bot = AsyncTeleBot(tg_token)
     await bot.delete_my_commands(scope=None, language_code=None)
     await bot.set_my_commands(
         commands=[
