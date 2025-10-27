@@ -6,5 +6,6 @@ FROM python:slim
 WORKDIR /gemini
 COPY --from=builder /gemini/src/ .
 COPY --from=builder /gemini/requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
 CMD [ "python", "main.py" ]
