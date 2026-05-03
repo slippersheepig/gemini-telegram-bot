@@ -5,6 +5,10 @@ services:
   gemini:
     image: sheepgreen/gemini #or use ghcr.io/slippersheepig/gemini
     container_name: gemini
-    command: [ "python", "main.py", "TELEGRAM_BOT_API_KEY", "GEMINI_API_KEYS", "ADMIN_USER_IDS" ]
+    environment:
+      - TELEGRAM_BOT_API_KEY="YOUR_TELEGRAM_BOT_API_KEY"
+      - GEMINI_API_KEYS="YOUR_GEMINI_API_KEYS"
+      - ADMIN_USER_IDS="YOUR_ADMIN_USER_IDS"
+    command: [ "python", "main.py" ]
     restart: always
 ```
